@@ -16,7 +16,23 @@ function nextQuestion() {
 
 function questionOnLoad() {
 	console.log(currentQuestion);
-	document.getElementById("question").textContent = currentQuestion.question;
+
+	let questionLabel = document.getElementById("question");
+	questionLabel.textContent = currentQuestion.question;
+
+	let optionsDiv = document.getElementById("options");
+	optionsDiv.innerHTML = "";
+	
+	for (var i = 0; i < currentQuestion.options.length; i++) {
+		let button = document.createElement("button");
+		button.textContent = currentQuestion.options[i];
+		button.optionIndex = i;
+		button.onclick = function() {
+			onOptionSelected(button.optionIndex);
+		}
+		optionsDiv.appendChild(button);
+	}
+
 }
 
 function fetchQuestion(qId) {
@@ -32,4 +48,13 @@ function fetchQuestion(qId) {
 		questionOnLoad();
 	}
 
+}
+
+function onOptionSelected(optionIndex) {
+	console.log(optionIndex);
+	if (currentQuestion.corA == optionIndex) {
+		alert("正解！");
+	} else {
+		alert("残念！");
+	}
 }
