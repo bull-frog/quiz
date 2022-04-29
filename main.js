@@ -19,7 +19,7 @@ window.onload = function() {
 	if (userId) {
 		alert("Welcome, " + localStorage.getItem("nickname"));
 	} else {
-		location.href = "/register/";
+		location.href = "register/";
 	}
 
 }
