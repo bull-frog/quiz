@@ -68,4 +68,5 @@ function onOptionSelected(optionIndex) {
 	} else {
 		alert("残念！");
 	}
+	nextQuestion();
 }
