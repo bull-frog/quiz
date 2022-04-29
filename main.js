@@ -17,9 +17,6 @@ function nextQuestion() {
 function questionOnLoad() {
 	console.log(currentQuestion);
 	document.getElementById("question").textContent = currentQuestion.question;
-	if (currentQuestion.imgUrl == "") {
-		document.getElementById("question").
-	}
 }
 
 function fetchQuestion(qId) {
