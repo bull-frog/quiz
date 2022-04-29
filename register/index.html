@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>ニックネームを登録</title>
+		<script>
+			let firstAccessTime;
+			let userId;
+			let nickname;
+
+			window.onload = function() {
+
+				userId = localStorage.getItem("userId");
+				if (userId) {
+					location.href = "/";
+				}
+
+				firstAccessTime = new Date().getTime();
+
+			}
+
+			function onRegister() {
+				
+				let nickname = document.forms[0].elements[0].value;
+				if (nickname == "") {
+					nickname = "名無し";
+				}
+
+				localStorage.setItem("userId", firstAccessTime);
+				localStorage.setItem("nickname", nickname);
+
+			}
+		</script>
+		<link rel="stylesheet" href="/master.css">
+	</head>
+	<body>
+		<h1 id="title">ニックネームを登録（任意）</h1>
+		
+		<form>
+			<input type="text" id="name" name="name" placeholder="名無し" size="10">さん<br>
+			<button onclick="onRegister()">go</button>
+		</form>
+
+	</body>
+</html>

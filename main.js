@@ -11,6 +11,19 @@ const questions = ["001", "002", "003", "004", "005", "006", "007", "008", "009"
 var questionNumber = 0;
 var currentQuestion;
 
+var userId;
+
+window.onload = function() {
+	
+	let userId = localStorage.getItem("userId");
+	if (userId) {
+		
+	} else {
+		location.href = "/register/";
+	}
+
+}
+
 function nextQuestion() {
 	fetchQuestion(questions[questionNumber]);
 	document.getElementById("title").textContent = "クイズ #" + questions[questionNumber];
