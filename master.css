@@ -10,3 +10,17 @@ html {
 img {
 	object-fit: contain;
 }
+
+button.quizOption {
+	height: 40px;
+	width: 80vw;
+	background-color: aqua;
+	color: black;
+}
+
+button.quizOption:hover {
+	height: 40px;
+	width: 80vw;
+	background-color: blue;
+	color: white;
+}

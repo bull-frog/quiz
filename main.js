@@ -12,6 +12,7 @@ var questionNumber = 0;
 var currentQuestion;
 
 var userId;
+var nickname = "";
 
 window.onload = function() {
 	
@@ -19,7 +20,7 @@ window.onload = function() {
 	if (userId) {
 		alert("Welcome, " + localStorage.getItem("nickname"));
 	} else {
-		location.href = "./register/index.html";
+		// location.href = "./register/index.html";
 	}
 
 }
@@ -50,6 +51,7 @@ function questionOnLoad() {
 	for (var i = 0; i < currentQuestion.options.length; i++) {
 		let button = document.createElement("button");
 		button.textContent = currentQuestion.options[i];
+		button.classList.add("quizOption");
 		button.optionIndex = i;
 		button.onclick = function() {
 			onOptionSelected(button.optionIndex);
