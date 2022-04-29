@@ -7,11 +7,14 @@
 	"comment": ""
 }*/
 
-
+const questions = ["001", "002", "003", "004", "005", "006", "007", "008", "009", "010"];
+var questionNumber = 0;
 var currentQuestion;
 
 function nextQuestion() {
-	fetchQuestion("001");
+	fetchQuestion(questions[questionNumber]);
+	document.getElementById("title").textContent = "クイズ #" + questions[questionNumber];
+	questionNumber++;
 }
 
 function questionOnLoad() {
@@ -19,6 +22,14 @@ function questionOnLoad() {
 
 	let questionLabel = document.getElementById("question");
 	questionLabel.textContent = currentQuestion.question;
+
+	let image = document.getElementById("image");
+	if (currentQuestion.imgUrl == "") {
+		image.setAttribute("style", "height:0;");
+	} else {
+		image.setAttribute("style", "height: 40vh; width: 80vw;");
+		image.setAttribute("src", currentQuestion.imgUrl);
+	}
 
 	let optionsDiv = document.getElementById("options");
 	optionsDiv.innerHTML = "";
