@@ -1,0 +1,8 @@
+html {
+	background-image: url('kari.png');
+}
+
+* {
+	text-align: center;
+	transition: 0.1s;
+}
