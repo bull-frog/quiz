@@ -1,87 +1,47 @@
-/*{
-	"qId": "001",
-	"question": "世界には「ミッキー」といった単位が存在しますが、何を測る単位でしょう？",
-	"imgUrl": "",
-	"options": ["テーマパークの大きさ", "パソコンのマウスの移動距離", "ハツカネズミの群れの数", "蒸気船の舵の大きさ"],
-	"corA": 1,
-	"comment": ""
-}*/
-
-const questions = ["001", "002", "003", "004", "005", "006", "007", "008", "009", "010"];
-var questionNumber = 0;
-var currentQuestion;
-
-var userId;
-var nickname = "";
+var section_start;
+var section_question;
+var section_answer;
 
 window.onload = function() {
-	
+	console.log("This is called");
 	let userId = localStorage.getItem("userId");
 	if (userId) {
-		alert("Welcome, " + localStorage.getItem("nickname"));
+		nickname = localStorage.getItem("nickname");
+		alert("Welcome, " + nickname + "!");
 	} else {
 		// location.href = "./register/index.html";
 	}
 
-}
-
-function nextQuestion() {
-	fetchQuestion(questions[questionNumber]);
-	document.getElementById("title").textContent = "クイズ #" + questions[questionNumber];
-	questionNumber++;
-}
-
-function questionOnLoad() {
-	console.log(currentQuestion);
-
-	let questionLabel = document.getElementById("question");
-	questionLabel.textContent = currentQuestion.question;
-
-	let image = document.getElementById("image");
-	if (currentQuestion.imgUrl == "") {
-		image.setAttribute("style", "height:0;");
-	} else {
-		image.setAttribute("style", "height: 40vh; width: 80vw;");
-		image.setAttribute("src", currentQuestion.imgUrl);
-	}
-
-	let optionsDiv = document.getElementById("options");
-	optionsDiv.innerHTML = "";
-	
-	for (var i = 0; i < currentQuestion.options.length; i++) {
-		let button = document.createElement("button");
-		button.textContent = currentQuestion.options[i];
-		button.classList.add("quizOption");
-		button.optionIndex = i;
-		button.onclick = function() {
-			onOptionSelected(button.optionIndex);
-		}
-		optionsDiv.appendChild(button);
-	}
+	section_start = document.getElementById("section_start");
+	section_question = document.getElementById("section_question");
+	section_answer = document.getElementById("section_answer");
 
 }
 
-function fetchQuestion(qId) {
-	
-	let requestURL = "https://raw.githubusercontent.com/bull-frog/personal/main/q" + qId + ".json";
-	let request = new XMLHttpRequest();
-	request.open("GET", requestURL);
-	request.responseType = "json";
-	request.send();
-
-	request.onload = function() {
-		currentQuestion = request.response;
-		questionOnLoad();
-	}
-
-}
-
-function onOptionSelected(optionIndex) {
-	console.log(optionIndex);
-	if (currentQuestion.corA == optionIndex) {
-		alert("正解！");
-	} else {
-		alert("残念！");
-	}
+// スタート画面で、「START」ボタンが押されたとき
+function startQuiz() {
+	section_start.classList.remove("coverScreen");
+	section_start.classList.add("gone");
 	nextQuestion();
+}
+
+// 問題が選択されたとき
+function onSelectOption(index) {
+	section_question.classList.remove("coverScreen");
+	section_question.classList.add("gone");
+	section_answer.classList.add("coverScreen");
+	section_answer.classList.remove("gone");
+	displayAnswer(index);
+}
+
+// 問題画面で、「OK」ボタンが押されたとき
+function closeAnswer() {
+	if (questionDoesRemain()) {
+		// 次の問題へ
+		section_answer.classList.remove("coverScreen");
+		section_answer.classList.add("gone");
+		nextQuestion();
+	} else {
+		alert("総スコアは" + totalScore() + "点でした。おめでとうございます");
+	}
 }

@@ -4,26 +4,47 @@
 		<meta charset="UTF-8">
 		<title>クイズ</title>
 		<script src="main.js"></script>
-		<link rel="stylesheet" href="master.css">
+		<script src="question_orders.js"></script>
+		<script src="question_screen.js"></script>
+		<script src="answer_screen.js"></script>
+		<script src="score.js"></script>
+		<script src="user.js"></script>
+		<script src="timer.js"></script>
+		<link rel="stylesheet" href="style/master.css">
 	</head>
 	<body>
+		<header>
+		</header>
 
-
-		<h1 id="title">クイズ</h1>
-		<div>
-			<h2 id="question"></h2>
-			<img id="image" style="height: 40vh; width: 80vw;">
+		<!-- スタート画面 -->
+		<div id="section_start" class="coverScreen alignChildAtCenter">
+			<div>
+				<h1>クイズを始める</h1>
+				ボタンを押してスタート！
+				<button onclick="startQuiz()">START</button>
+			</div>
 		</div>
-		<div id="options">
+
+		<!-- 問題文を表示するセクション -->
+		<div id="section_question" class="gone">
+
+			<h1 id="question_sentence"></h1>
+			<img id="question_image">
+			<div id="question_optionlist"></div>
 
 		</div>
+		
+		<!-- 正解を表示するセクション -->
+		<div id="section_answer" class="gone">
 
-		<br>
+			<h1 id="answer_header"></h1>
+			<h3 id="answer_correctanswer"></h3>
+			<p id="answer_comment"></p>
+			<button onclick="closeAnswer()">OK</button>
+
+		</div>
 
 		<footer>
-			<script>
-				document.write(nickname + "さん");
-			</script>
 		</footer>
 	</body>
 </html>

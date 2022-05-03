@@ -1,0 +1,25 @@
+@import url("question.css");
+@import url("header.css");
+
+html {
+	background-image: url('../kari.png');
+}
+
+* {
+	text-align: center;
+}
+
+.coverScreen {
+	width: 100vw;
+	height: 100vh;
+}
+
+.gone, .gone * {
+	display: none;
+}
+
+.alignChildAtCenter {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
