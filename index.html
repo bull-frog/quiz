@@ -1,50 +1,104 @@
+<!-- Choose Course QUIZ25 -->
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="UTF-8">
-		<title>クイズ</title>
-		<script src="main.js"></script>
-		<script src="question_orders.js"></script>
-		<script src="question_screen.js"></script>
-		<script src="answer_screen.js"></script>
-		<script src="score.js"></script>
-		<script src="user.js"></script>
-		<script src="timer.js"></script>
-		<link rel="stylesheet" href="style/master.css">
+		<meta charset="utf-8">
+		<title>Quiz 25</title>
+		<link rel="stylesheet" href="./style/master.css">
+		<style>
+			#courselist {
+				display: grid;
+				grid-template-columns: 100px 300px 300px 200px;
+				column-gap: 20px;
+				row-gap: 40px;
+				align-items: center;
+			}
+
+			#courselist div {
+				text-align: left;
+			}
+
+			#courselist h2 {
+				margin-bottom: 4px;
+			}
+
+			#courselist > img {
+				width: 100%;
+			}
+
+			.ranking {
+				display: flex;
+				align-items: center;
+			}
+
+			.ranking img {
+				width: 30px;
+				height: 30px;
+			}
+
+			.ranking span {
+				font-size: x-large;
+				transform: scaleY(1.3);
+			}
+		</style>
+		<script src="./js/transition.js"></script>
+		<script>
+			
+		</script>
 	</head>
 	<body>
+		
 		<header>
+			<a class="left" href=""><img src="./img/quiz25.png"></a>
+			<a class="right" href=""><img src="./img/hamburger.png"></a>
 		</header>
 
-		<!-- スタート画面 -->
-		<div id="section_start" class="coverScreen alignChildAtCenter">
-			<div>
-				<h1>クイズを始める</h1>
-				ボタンを押してスタート！
-				<button onclick="startQuiz()">START</button>
+		<div class="fader coverScreen">
+			<h1>ようこそ！</h1>
+			<br>
+
+			<div class="alignChildAtCenter">
+				<div id="courselist">
+					
+					<img src="./img/gattsuri.png">
+					<div>
+						<h2>ガッツリコース</h2>
+						理一生が本気で考えた知能クイズ
+					</div>
+					<div class="ranking">
+						<img src="./img/gold.png">
+						<span>290</span>点　　<span>Ken.T</span>
+					</div>
+					<button onclick="transit('./quiz/index.html')" class="secondary red triangle">始める</button>
+
+					<img src="./img/otegaru.png">
+					<div>
+						<h2>お手軽コース</h2>
+						常識の範疇内
+					</div>
+					<div class="ranking">
+						<img src="./img/gold.png">
+						<span>590</span>点　　<span>Ken.T</span>
+					</div>
+					<button onclick="transit('./quiz/index.html')" class="secondary blue triangle">始める</button>
+
+					<img src="./img/jukensei.png">
+					<div>
+						<h2>受験コース</h2>
+						東大受験を控えたあなたに
+					</div>
+					<div class="ranking">
+						<img src="./img/gold.png">
+						<span>290</span>点　　<span>Ken.T</span>
+					</div>
+					<button onclick="transit('./quiz/index.html')" class="secondary green triangle">始める</button>
+
+				</div>
+					
+				</div>
 			</div>
-		</div>
-
-		<!-- 問題文を表示するセクション -->
-		<div id="section_question" class="gone">
-
-			<h1 id="question_sentence"></h1>
-			<img id="question_image">
-			<div id="question_optionlist"></div>
-
-		</div>
-		
-		<!-- 正解を表示するセクション -->
-		<div id="section_answer" class="gone">
-
-			<h1 id="answer_header"></h1>
-			<h3 id="answer_correctanswer"></h3>
-			<p id="answer_comment"></p>
-			<button onclick="closeAnswer()">OK</button>
 
 		</div>
 
-		<footer>
-		</footer>
 	</body>
 </html>

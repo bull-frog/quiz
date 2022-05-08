@@ -1,5 +1,8 @@
 // 問題画面を表示するプログラム
 
+// ボタンのカラー順
+const colors = ["blue", "red", "green", "yellow"];
+
 // 次の問題を表示する
 function displayNextQuestion() {
 
@@ -16,17 +19,20 @@ function displayNextQuestion() {
 	}
 
 	// 選択肢を表示する
-	let optionList = document.getElementById("question_optionlist");
+	let optionList = document.getElementById("options");
 	optionList.innerHTML = "";//前問の選択肢ボタンを全て消す
 	for (var i = 0; i < currentQuestion.options.length; i++) {
 		let button = document.createElement("button");
 		button.textContent = currentQuestion.options[i];
-		button.classList.add("quizOption");
+		button.classList.add("quizoption");
+		button.classList.add(colors[i % 4]);
 		button.optionIndex = i;
 		button.onclick = function() {
 			onSelectOption(button.optionIndex);
 		}
 		optionList.appendChild(button);
 	}
+
+	window.document.onkeydown = undefined;
  
 }

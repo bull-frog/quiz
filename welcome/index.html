@@ -1,0 +1,90 @@
+<!-- Welcome Screen -->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Quiz 25</title>
+		<link rel="stylesheet" href="../style/master.css">
+		<style>
+
+			body {
+				overflow: hidden;
+			}
+
+			#welcome {
+				height: 100vh;
+			}
+			#welcome, #welcome * {
+				animation: fadeIn 1s ease 0s 1 normal;
+				transition: 1s;
+			}
+			#welcome.stayUp, #welcome.stayUp * {
+				transform: translateY(-50vh);
+			}
+
+			#nickname {
+				position: fixed;
+				top: 0;
+				z-index: 100;
+				height: 100vh;
+				width: 100vw;
+			}
+			#nickname, #nickname * {
+				transition: ease-out 1s;
+			}
+			#nickname.stayDown, #nickname.stayDown * {
+				transform: translateY(100vh);
+			}
+		</style>
+		<script src="../js/transition.js"></script>
+		<script>
+			window.onload = function() {
+				setTimeout(() => {
+					document.getElementById("welcome").classList.add("stayUp");
+					document.getElementById("nickname").classList.remove("stayDown");
+				}, 2000);
+			}
+
+			window.document.onkeydown = function(event){
+      			if (event.key === 'Enter') {
+        	    	register();
+        		}
+    		}
+
+			function register() {
+				let nickname = document.getElementById("nicknamefield").value;
+				if (nickname == "") {
+					nickname = "名無し";
+				}
+				let firstAccessTime = (new Date()).getTime();
+				localStorage.setItem("userId", firstAccessTime);
+				localStorage.setItem("nickname", nickname);
+				transit("../index.html");
+			}
+		</script>
+	</head>
+	<body>
+		<div id="welcome" class="alignChildAtCenter">
+			<div>
+				<img style="width: 50vw;" src="../img/quiz25.png"><br>
+				<h1>理一25組のクイズへようこそ！</h1>
+			</div>
+		</div>
+
+		<div id="nickname" class="fader alignChildAtCenter stayDown">
+
+			<header>
+				<a class="left"><img src="../img/quiz25.png"></a>
+				<!-- <a class="right" href=""><img src="../img/hamburger.png"></a> -->
+			</header>
+
+			<div>
+				<h1>ニックネームを登録（任意）</h1>
+				<p>ニックネーム：<input id="nicknamefield" placeholder="名無し" spellcheck="false" autofocus></p><br>
+				<button class="primary red" onclick="register()">はじめる</button>
+			</div>
+	
+		</div>
+
+	</body>
+</html>

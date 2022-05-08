@@ -1,0 +1,103 @@
+<!-- Show the result of the game. -->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Quiz 25</title>
+		<link rel="stylesheet" href="../style/master.css">
+		<style>
+			#progress {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				width: 100vw;
+			}
+
+			#totalscore {
+				font-size: 300%;
+			}
+
+			#menu {
+				padding-left: 10vw;
+				padding-right: 10vw;
+				display: grid;
+				justify-content: center;
+				grid-template-columns: 1fr 1fr 1fr;
+				gap: 5vw;
+			}
+
+			#share::after {
+				content: "";
+				display: inline-block;
+				position: absolute;
+				width: 40px;
+				height: 40px;
+				bottom: 10px;
+				right: 20px;
+				background-image: url("../img/share.png");
+				background-size: contain;
+				vertical-align: middle;
+			}
+
+			#retry::after {
+				content: "";
+				display: inline-block;
+				position: absolute;
+				width: 40px;
+				height: 40px;
+				bottom: 10px;
+				right: 20px;
+				background-image: url("../img/retry.png");
+				background-size: contain;
+				vertical-align: middle;
+			}
+
+			#ranking::after {
+				content: "";
+				display: inline-block;
+				position: absolute;
+				width: 40px;
+				height: 40px;
+				bottom: 10px;
+				right: 20px;
+				background-image: url("../img/viewranking.png");
+				background-size: contain;
+				vertical-align: middle;
+			}
+			
+		</style>
+		<script>
+			
+		</script>
+	</head>
+	<body>
+		
+		<header>
+			<a class="left" href=""><img src="../img/quiz25.png"></a>
+			<a class="right" href=""><img src="../img/hamburger.png"></a>
+		</header>
+
+		<div class="coverScreen">
+
+			<div id="progress">
+				<img id="course_icon" src="../img/gattsuri.png" style="width: 60px; height: 60px">　
+				<h3>ガッツリコース</h3>　
+				<h2>結果発表</h2>
+			</div>
+
+			<div style="margin-top: 10vh; margin-bottom: 20vh;">
+				<h1 style="margin-bottom: 0;"><span id="totalscore">391</span>点</h1>
+				<h2 style="margin-top: 0;">〇〇問中〇〇問正解</h2>
+			</div>
+
+			<div id="menu">
+				<button id="share" class="primary blue">共有する</button>
+				<button id="retry" class="primary red">再挑戦</button>
+				<button id="ranking" class="primary green">ランキング</button>
+			</div>
+			
+		</div>
+
+
+	</body>
+</html>

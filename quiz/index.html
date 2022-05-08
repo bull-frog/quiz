@@ -1,0 +1,132 @@
+<!-- Question & Answer Screen -->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Quiz 25</title>
+		<link rel="stylesheet" href="../style/master.css">
+		<style>
+			#progress {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				width: 100vw;
+			}
+
+			#options {
+				justify-content:center;
+				align-content: flex-start;
+				display: grid;
+				grid-template-columns: 40vw;
+				gap: 10px;
+				counter-reset: rank 0;
+			}
+
+			#answer > div {
+				display: grid;
+				justify-content: center;
+				align-content: center;
+				grid-template-columns: 20vw 60vw;
+				gap: 8vw;
+			}
+
+			#answericon {
+				width: 100%;
+				height: auto;
+			}
+			
+		</style>
+		<script src="../js/transition.js"></script>
+		<script src="./question_orders.js"></script>
+		<script src="./question_screen.js"></script>
+		<script src="./score.js"></script>
+		<script src="./timer.js"></script>
+		<script src="./answer_screen.js"></script>
+		<script>
+
+			var section_question;
+			var section_answer;
+
+			window.onload = function() {
+				section_question = document.getElementById("question");
+				section_answer = document.getElementById("answer");
+				nextQuestion();
+			}
+
+			function onSelectOption(index) {
+				displayAnswer(index);
+				section_question.classList.add("fadeOut");
+				setTimeout(() => {
+					section_question.classList.add("gone");
+					window.scrollTo(0, 0);
+					section_answer.classList.remove("gone");
+					section_answer.classList.remove("fadeOut");
+				}, 200);
+			}
+
+			function closeAnswer() {
+				if (questionDoesRemain()) {
+					nextQuestion();
+				} else {
+					alert("総スコアは" + totalScore() + "点でした。おめでとうございます");
+				}
+			}
+
+			function onClickLogo() {
+				if (window.confirm("本当にこのページを離れますか？\n進行内容は保存されません。")) {
+					transit("../index.html");
+				}
+			}
+
+		</script>
+	</head>
+	<body>
+		
+		<header>
+			<a onclick="onClickLogo()" class="left"><img src="../img/quiz25.png"></a>
+			<a class="right"><img src="../img/hamburger.png"></a>
+		</header>
+
+		<div class="fader coverScreen">
+
+			<div id="progress">
+				<img id="course_icon" src="../img/gattsuri.png" style="width: 60px; height: 60px">　
+				<h3>ガッツリコース</h3>　
+				<h2 id="qnumber">第0/0問</h2>
+			</div>
+			
+			<div id="question" class="fader">
+				東大生平均解答時間<span id="avetime">3.5</span>秒
+
+				<h1 id="question_sentence"></h1><br>
+
+				<div style="display: flex; justify-content: center; align-content: flex-start;">
+					<img id="question_image" style="width: 24vw; margin-right: 10vw;">
+					<div id="options">
+					</div>
+				</div>
+			</div>
+
+			<div id="answer" class="fader gone fadeOut" style="margin-top: 60px;">
+				
+				<div style="justify-content: center; margin-bottom: 10vh;">
+					<img id="answericon" src="../img/ok.png">
+
+					<div style="text-align: left;">
+						<h1 id="judge" style="font-size: 260%; margin-top: 0;">正解！</h1>
+						<span id="comment">パンダの学名は◯◯。△△はホッキョクグマ、□□はタテゴトアザラシの学名です。</span>
+						<br><br>
+						解答時間：<span id="time">3.8</span>秒<br>
+						得点：<span id="score">25</span>点
+					</div>
+				</div>
+
+				<button onclick="closeAnswer()" class="primary red triangle" style="width: 300px">次へ</button>
+
+			</div>
+
+		</div>
+
+
+	</body>
+</html>

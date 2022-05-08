@@ -24,6 +24,10 @@ var currentQuestion;
 // 次の質問へ移動
 function nextQuestion() {
 
+	section_answer.classList.add("fadeOut");
+	window.scrollTo(0, 0);
+	document.getElementById("qnumber").textContent = "第" + (questionNumber + 1) + " / " + questions.length + "問"
+
 	// サーバーにリクエストを送信
 	let requestURL = "https://raw.githubusercontent.com/bull-frog/personal/main/q" + questions[questionNumber] + ".json";
 	let request = new XMLHttpRequest();
@@ -35,10 +39,14 @@ function nextQuestion() {
 		currentQuestion = request.response;
 		// 次の問題を画面に表示する
 		displayNextQuestion();
-		section_question.classList.add("coverScreen");
-		section_question.classList.remove("gone");
-		// タイマーを起動する
-		resetAndStartTimer();
+		setTimeout(() => {
+			section_answer.classList.add("gone");
+			section_question.classList.remove("gone");
+			section_question.classList.remove("fadeOut");
+			setTimeout(() => {
+				resetAndStartTimer();
+			}, 200);
+		}, 200);
 	}
 
 	questionNumber++;
