@@ -43,6 +43,15 @@
 		</style>
 		<script src="./js/transition.js"></script>
 		<script>
+
+			window.onload = function() {
+				let userId = localStorage.getItem("userId");
+				if (userId) {
+					
+				} else {
+					location.href = "./register/index.html";
+				}
+			}
 			
 		</script>
 	</head>
