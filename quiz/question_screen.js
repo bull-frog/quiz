@@ -34,8 +34,8 @@ function displayNextQuestion() {
 	}
 
 	window.document.onkeydown = function(event){
-		if (0 <= event.key && event.key < currentQuestion.options.length) {
-			onSelectOption(event.key);
+		if (0 < event.key && event.key <= currentQuestion.options.length) {
+			onSelectOption(event.key - 1);
 		} else {
 			console.log("invalid key input: '" + event.key + "'");
 		}
