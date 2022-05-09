@@ -33,6 +33,11 @@ function displayNextQuestion() {
 		optionList.appendChild(button);
 	}
 
-	window.document.onkeydown = undefined;
- 
+	window.document.onkeydown = function(event){
+		if (0 <= event.key && event.key < currentQuestion.options.length) {
+			onSelectOption(event.key);
+		} else {
+			console.log("invalid key input: '" + event.key + "'");
+		}
+	}
 }

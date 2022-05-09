@@ -28,6 +28,8 @@ function displayAnswer(index) {
 	window.document.onkeydown = function(event){
 		if (event.key === 'Enter') {
 			closeAnswer();
+		} else {
+			console.log("invalid key input: '" + event.key + "'");
 		}
 	}
 
