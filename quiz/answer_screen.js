@@ -31,7 +31,7 @@ function displayAnswer(index) {
 		}).catch(error => {
 			console.log(error);
 		});
-		fetch("https://script.google.com/macros/s/AKfycbwgFEvEWuVxJ8Iq8F_Oevahqm3_5e6UKvr6gCsUah34cAA7ZW2M5uJaSGBh_iKOViLbZA/exec?" + query_params).then(response => {
+		fetch("https://script.google.com/macros/s/AKfycbycc6vqzgXYaRSXJFzOTWHJQHp-JaE8NFfRzaYXOUbvnNbxDVDv_53D0caYML7JgooEZA/exec?" + query_params).then(response => {
 						response.text().then((result) => {
 							alert("総スコアは" + totalScore() + "点、現在までの順位は" + result + "位でした。おめでとうございます！");
 						}).catch(error => {});
