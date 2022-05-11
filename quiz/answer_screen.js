@@ -31,6 +31,13 @@ function displayAnswer(index) {
 		}).catch(error => {
 			console.log(error);
 		});
+		fetch("https://script.google.com/macros/s/AKfycbwgFEvEWuVxJ8Iq8F_Oevahqm3_5e6UKvr6gCsUah34cAA7ZW2M5uJaSGBh_iKOViLbZA/exec?" + query_params).then(response => {
+						response.text().then((result) => {
+							alert("総スコアは" + totalScore() + "点、現在までの順位は" + result + "位でした。おめでとうございます！");
+						}).catch(error => {});
+					}).catch(error => {
+						console.log(error);
+					});
 
 	} else {
 		header.textContent = "不正解";
