@@ -68,7 +68,20 @@
 				if (questionDoesRemain()) {
 					nextQuestion();
 				} else {
-					alert("総スコアは" + totalScore() + "点でした。おめでとうございます");
+					const params = {
+						course: "GATTSURI",
+						userid: localStorage.getItem("userId"),
+						nickname: localStorage.getItem("nickname"),
+						score: totalScore()
+					};
+					const query_params = new URLSearchParams(params);
+					fetch("https://script.google.com/macros/s/AKfycbwgFEvEWuVxJ8Iq8F_Oevahqm3_5e6UKvr6gCsUah34cAA7ZW2M5uJaSGBh_iKOViLbZA/exec?" + query_params).then(response => {
+						response.text().then((result) => {
+							alert("総スコアは" + totalScore() + "点、現在までの順位は" + result + "位でした。おめでとうございます！");
+						})
+					}).catch(error => {
+						console.log(error);
+					});
 				}
 			}
 
