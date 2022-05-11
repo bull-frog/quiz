@@ -24,7 +24,11 @@ function displayAnswer(index) {
 		};
 		const query_params = new URLSearchParams(params);
 		fetch("https://script.google.com/macros/s/AKfycbwgFEvEWuVxJ8Iq8F_Oevahqm3_5e6UKvr6gCsUah34cAA7ZW2M5uJaSGBh_iKOViLbZA/exec?" + query_params).then(response => {
-			console.log(response.text());
+			response.text().then((result) => {
+				console.log(result)
+			}).catch((err) => {
+				
+			});
 		}).catch(error => {
 			console.log(error);
 		});
