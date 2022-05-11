@@ -17,6 +17,18 @@ function displayAnswer(index) {
 		comment_label.textContent = currentQuestion.comment;
 		timelabel.textContent = Math.round(getTimerValue() / 100) / 10;
 		scorelabel.textContent = score;
+
+		const params = {
+			qId: +(currentQuestion.qId),
+			time: getTimerValue()
+		};
+		const query_params = new URLSearchParams(params);
+		fetch("https://script.google.com/macros/s/AKfycbwgFEvEWuVxJ8Iq8F_Oevahqm3_5e6UKvr6gCsUah34cAA7ZW2M5uJaSGBh_iKOViLbZA/exec?" + query_params).then(response => {
+			console.log(response);
+		}).catch(error => {
+			console.log(error);
+		});
+
 	} else {
 		header.textContent = "不正解";
 		answericon.setAttribute("src", "../img/ng.png");
