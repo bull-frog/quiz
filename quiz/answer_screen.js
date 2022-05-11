@@ -27,7 +27,6 @@ function displayAnswer(index) {
 			response.text().then((result) => {
 				console.log(result)
 			}).catch((err) => {
-				
 			});
 		}).catch(error => {
 			console.log(error);
