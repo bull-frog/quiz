@@ -89,6 +89,7 @@
 			function displayResult() {
 				document.getElementById("totalscore").textContent = score;
 				document.getElementById("yourrank").textContent = rank + "\n";
+				document.getElementById("nickname").textContent = localStorage.getItem("nickname") + "さん";
 
 				const studentsAverage = numberOfQuestions[course] * 100;
 				var judgement = "";
@@ -144,7 +145,8 @@
 			<div id="progress">
 				<img id="course_icon" src="../img/gattsuri.png" style="width: 60px; height: 60px">　
 				<h3 id="course_name">ガッツリコース</h3>　
-				<h2>結果発表</h2>
+				<h2>結果発表</h2><br>
+				<h2 id="nickname"></h2>
 			</div>
 
 			<div id="scores" class="fader" style="margin-top: 10vh; margin-bottom: 20vh;">
