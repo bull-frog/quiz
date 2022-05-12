@@ -50,6 +50,11 @@
 			window.onload = function() {
 				section_question = document.getElementById("question");
 				section_answer = document.getElementById("answer");
+
+				let url = new URL(location.href);
+				course = url.searchParams.get("course");
+				alert(course);
+
 				nextQuestion();
 			}
 

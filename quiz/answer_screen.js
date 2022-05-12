@@ -17,35 +17,6 @@ function displayAnswer(index) {
 		comment_label.textContent = currentQuestion.comment;
 		timelabel.textContent = Math.round(getTimerValue() / 100) / 10;
 		scorelabel.textContent = score;
-
-		var params = {
-			qId: +(currentQuestion.qId),
-			time: getTimerValue()
-		};
-		var query_params = new URLSearchParams(params);
-		fetch("https://script.google.com/macros/s/AKfycbwgFEvEWuVxJ8Iq8F_Oevahqm3_5e6UKvr6gCsUah34cAA7ZW2M5uJaSGBh_iKOViLbZA/exec?" + query_params).then(response => {
-			response.text().then((result) => {
-				console.log(result)
-			}).catch((err) => {
-			});
-		}).catch(error => {
-			console.log(error);
-		});
-		var params = {
-			course:'GATTSURI',
-			userid:'01',
-			nickname:'nick',
-			score:totalScore()
-		};
-		var query_params = new URLSearchParams(params);
-		fetch("https://script.google.com/macros/s/AKfycbycc6vqzgXYaRSXJFzOTWHJQHp-JaE8NFfRzaYXOUbvnNbxDVDv_53D0caYML7JgooEZA/exec?" + query_params).then(response => {
-						response.text().then((result) => {
-							alert("総スコアは" + totalScore() + "点、現在までの順位は" + result + "位でした。おめでとうございます！");
-						}).catch(error => {});
-					}).catch(error => {
-						console.log(error);
-					});
-
 	} else {
 		header.textContent = "不正解";
 		answericon.setAttribute("src", "../img/ng.png");
