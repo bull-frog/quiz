@@ -14,7 +14,7 @@
 				width: 100vw;
 			}
 
-			#totalscore {
+			#totalscore, #judgement_label {
 				font-size: 300%;
 			}
 
@@ -76,8 +76,11 @@
 						fetch("https://script.google.com/macros/s/AKfycbycc6vqzgXYaRSXJFzOTWHJQHp-JaE8NFfRzaYXOUbvnNbxDVDv_53D0caYML7JgooEZA/exec?" + query_params).then(response => {
 							response.text().then((result) => {
 								rank = result;
+								localStorage.setItem(course + "_rank", rank);
 							}).catch(error => {});}).catch(error => {console.log(error);
 						});
+					} else {
+						rank = "前回以前に登録された順位：" + localStorage.getItem(course + "_rank");
 					}
 					displayResult();
 				}, 10);
