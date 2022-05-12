@@ -63,9 +63,9 @@
 
 				request.onload = function() {
 					questions = request.response[course];
+					nextQuestion();
 				}
-
-				nextQuestion();
+				
 			}
 
 			function onSelectOption(index) {
