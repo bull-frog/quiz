@@ -53,7 +53,17 @@
 
 				let url = new URL(location.href);
 				course = url.searchParams.get("course");
-				alert(course);
+				
+				// 問題リストを受信する
+				let requestURL = "https://raw.githubusercontent.com/bull-frog/personal/main/courses.json";
+				let request = new XMLHttpRequest();
+				request.open("GET", requestURL);
+				request.responseType = "json";
+				request.send();
+
+				request.onload = function() {
+					questions = request.response[course];
+				}
 
 				nextQuestion();
 			}

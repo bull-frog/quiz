@@ -16,7 +16,7 @@ var currentQuestion = {
 var couse;
 
 // qIdの配列
-var questions = ["001", "002", "003", "004", "005", "006", "007", "008", "009", "010"];
+var questions;
 
 // 上の配列のうち、次は何番目か
 var questionNumber = 0;
