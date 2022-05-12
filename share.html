@@ -3,8 +3,8 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Quiz 25</title>
-		<link rel="icon" href="../img/favicon.ico">
-		<link rel="stylesheet" href="../style/master.css">
+		<link rel="icon" href="./img/favicon.ico">
+		<link rel="stylesheet" href="./style/master.css">
 		<style>
 			header {
 				height: 120px;
@@ -13,7 +13,7 @@
 				padding-top: 160px;
 			}
 		</style>
-		<script src="../js/transition.js"></script>
+		<script src="./js/transition.js"></script>
 		<script>
 
 			var course;
@@ -33,7 +33,7 @@
 			}
 
 			if (!qId || qId == "") {
-				location.href = "../index.html";
+				location.href = "./index.html";
 			}
 
 			let requestURL = "https://raw.githubusercontent.com/bull-frog/personal/main/q" + qId + ".json";
@@ -44,7 +44,7 @@
 
 			request.onload = function() {
 				question = request.response;
-				document.getElementById("course_icon").setAttribute("src", "../img/" + course + ".png");
+				document.getElementById("course_icon").setAttribute("src", "./img/" + course + ".png");
 				document.getElementById('coursename').textContent = courses[course];
 				document.getElementById("question_sentence").textContent = question.question;
 				if (question.imgUrl != "") {
@@ -58,7 +58,7 @@
 	<body>
 		
 		<header>
-			<a class="center" onclick="transit('../index.html');"><img src="../img/quiz25.png"></a>
+			<a class="center" onclick="transit('./index.html');"><img src="./img/quiz25.png"></a>
 		</header>
 
 		<div class="fader coverScreen">
