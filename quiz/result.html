@@ -64,15 +64,16 @@
 				document.getElementById("course_name").textContent = courses[course];
 				setTimeout(() => {
 					score = localStorage.getItem("temporary");
+					alert("Score: " + score + "\nCourse: " + course);
 					if (!localStorage.getItem(course)) {
 						localStorage.setItem(course, score);
-						const params = {
+						var params = {
 							course: course,
 							userid: localStorage.getItem("userId"),
 							nickname: localStorage.getItem("nickname"),
 							score: score
 						};
-						const query_params = new URLSearchParams(params);
+						var query_params = new URLSearchParams(params);
 						fetch("https://script.google.com/macros/s/AKfycbycc6vqzgXYaRSXJFzOTWHJQHp-JaE8NFfRzaYXOUbvnNbxDVDv_53D0caYML7JgooEZA/exec?" + query_params).then(response => {
 							response.text().then((result) => {
 								rank = result;
