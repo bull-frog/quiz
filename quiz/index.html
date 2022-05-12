@@ -83,11 +83,12 @@
 			}
 
 			function closeAnswer() {
+				document.getElementById("nextbutton").disabled = true;
 				if (questionDoesRemain()) {
 					nextQuestion();
 				} else {
 					const params = {
-						course: "GATTSURI",
+						course: course,
 						userid: localStorage.getItem("userId"),
 						nickname: localStorage.getItem("nickname"),
 						score: totalScore()
@@ -95,10 +96,8 @@
 					const query_params = new URLSearchParams(params);
 					fetch("https://script.google.com/macros/s/AKfycbycc6vqzgXYaRSXJFzOTWHJQHp-JaE8NFfRzaYXOUbvnNbxDVDv_53D0caYML7JgooEZA/exec?" + query_params).then(response => {
 						response.text().then((result) => {
-							alert("総スコアは" + totalScore() + "点、現在までの順位は" + result + "位でした。おめでとうございます！");
-						}).catch(error => {});
-					}).catch(error => {
-						console.log(error);
+							localStorage.setItem(course, totalScore());
+						}).catch(error => {});}).catch(error => {console.log(error);
 					});
 				}
 			}
@@ -152,7 +151,7 @@
 					</div>
 				</div>
 
-				<button onclick="closeAnswer()" class="primary red triangle" style="width: 300px">次へ</button>
+				<button id="nextbutton" onclick="closeAnswer()" class="primary red triangle" style="width: 300px">次へ</button>
 
 			</div>
 

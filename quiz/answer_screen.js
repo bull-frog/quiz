@@ -11,6 +11,8 @@ function displayAnswer(index) {
 	let timelabel = document.getElementById("time");
 	let scorelabel = document.getElementById("score");
 
+	document.getElementById("nextbutton").disabled = false;
+
 	if (score > 0) {
 		header.textContent = "正解！";
 		answericon.setAttribute("src", "../img/ok.png");
