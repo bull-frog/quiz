@@ -18,6 +18,7 @@ body {
 	position: relative;
 	overscroll-behavior: none;
 	scrollbar-width: none;
+	white-space: pre-wrap;
 }
 
 *::-webkit-scrollbar {display: none;}
