@@ -27,11 +27,18 @@ function displayAnswer(index) {
 		scorelabel.textContent = score;
 	}
 
+	let requestURL = "https://script.google.com/macros/s/AKfycbwgFEvEWuVxJ8Iq8F_Oevahqm3_5e6UKvr6gCsUah34cAA7ZW2M5uJaSGBh_iKOViLbZA/exec?qId=" + currentQuestion.qId + "&time=" + getTimerValue();
+	let request = new XMLHttpRequest();
+	request.open("GET", requestURL);
+	request.responseType = "json";
+	request.send();
+	request.onload = function() {console.log("Answer Time Sent Successfully.");}
+
 	window.document.onkeydown = function(event){
 		if (event.key === 'Enter') {
 			closeAnswer();
 		} else {
-			console.log("invalid key input: '" + event.key + "'");
+			// 何もしない
 		}
 	}
 

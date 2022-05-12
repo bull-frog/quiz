@@ -39,35 +39,73 @@
 				background-size: contain;
 				vertical-align: middle;
 			}
-
-			#retry::after {
-				content: "";
-				display: inline-block;
-				position: absolute;
-				width: 40px;
-				height: 40px;
-				bottom: 10px;
-				right: 20px;
-				background-image: url("../img/retry.png");
-				background-size: contain;
-				vertical-align: middle;
-			}
-
-			#ranking::after {
-				content: "";
-				display: inline-block;
-				position: absolute;
-				width: 40px;
-				height: 40px;
-				bottom: 10px;
-				right: 20px;
-				background-image: url("../img/viewranking.png");
-				background-size: contain;
-				vertical-align: middle;
-			}
 			
 		</style>
 		<script>
+
+			const courses = {
+				GATTSURI: "ガッツリコース",
+				OTEGARU: "お手軽コース",
+				JUKEN: "受験コース"
+			};
+			var course;
+			var score;
+			var rank;
+			var switchScreen = 0; // 0がスコア、1が判定画面
+
+			window.onload = function() {
+				course = (new URL(location.href)).searchParams.get("course");
+				document.getElementById("course_icon").setAttribute("src", "../img/" + course + ".png");
+				document.getElementById("course_name").textContent = courses[course];
+				setTimeout(() => {
+					score = localStorage.getItem("temporary");
+					if (!localStorage.getItem(course)) {
+						localStorage.setItem(course, score);
+						const params = {
+							course: course,
+							userid: localStorage.getItem("userId"),
+							nickname: localStorage.getItem("nickname"),
+							score: score
+						};
+						const query_params = new URLSearchParams(params);
+						fetch("https://script.google.com/macros/s/AKfycbycc6vqzgXYaRSXJFzOTWHJQHp-JaE8NFfRzaYXOUbvnNbxDVDv_53D0caYML7JgooEZA/exec?" + query_params).then(response => {
+							response.text().then((result) => {
+								rank = result;
+							}).catch(error => {});}).catch(error => {console.log(error);
+						});
+					}
+					
+				}, 10);
+			}
+
+			function displayResult() {
+				document.getElementById("totalscore").textContent = score;
+				document.getElementById("yourrank").textContent = rank;
+
+			}
+
+			function switchView() {
+				if (switchScreen == 0) {
+					switchScreen = 1;
+					document.getElementById("switchview").textContent = "得点を表示";
+					document.getElementById("scores").classList.add("fadeOut");
+					setTimeout(() => {
+						document.getElementById("scores").classList.add("gone");
+						document.getElementById("judgement").classList.remove("gone");
+						document.getElementById("judgement").classList.remove("fadeOut");
+					}, 200);
+				} else {
+					switchScreen = 0;
+					document.getElementById("switchview").textContent = "得点を表示";
+					document.getElementById("judgement").classList.add("fadeOut");
+					setTimeout(() => {
+						document.getElementById("judgement").classList.add("gone");
+						document.getElementById("scores").classList.remove("gone");
+						document.getElementById("scores").classList.remove("fadeOut");
+					}, 200);
+				}
+			}
+
 			
 		</script>
 	</head>
@@ -78,23 +116,27 @@
 			<a class="right" href=""><img src="../img/hamburger.png"></a>
 		</header>
 
-		<div class="coverScreen">
+		<div class="fader coverScreen">
 
 			<div id="progress">
 				<img id="course_icon" src="../img/gattsuri.png" style="width: 60px; height: 60px">　
-				<h3>ガッツリコース</h3>　
+				<h3 id="course_name">ガッツリコース</h3>　
 				<h2>結果発表</h2>
 			</div>
 
-			<div style="margin-top: 10vh; margin-bottom: 20vh;">
+			<div id="scores" class="fader" style="margin-top: 10vh; margin-bottom: 20vh;">
 				<h1 style="margin-bottom: 0;"><span id="totalscore">391</span>点</h1>
-				<h2 style="margin-top: 0;">〇〇問中〇〇問正解</h2>
+				<h2 id="yourrank" style="margin-top: 0;"></h2>
+			</div>
+
+			<div id="judgement" class="fader fadeOut gone" style="margin-top: 10vh; margin-bottom: 20vh;">
+			
 			</div>
 
 			<div id="menu">
 				<button id="share" class="primary blue">共有する</button>
-				<button id="retry" class="primary red">再挑戦</button>
-				<button id="ranking" class="primary green">ランキング</button>
+				<button id="switchview" onclick="switchView();" class="primary red triangle">判定を表示</button>
+				<button id="ranking" class="primary green triangle">ランキング</button>
 			</div>
 			
 		</div>

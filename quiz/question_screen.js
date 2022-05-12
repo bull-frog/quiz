@@ -38,7 +38,7 @@ function displayNextQuestion() {
 			console.log("valid key input: '" + event.key + "'");
 			onSelectOption(event.key - 1);
 		} else {
-			console.log("invalid key input: '" + event.key + "'");
+			// 何もしない
 		}
 	}
 }

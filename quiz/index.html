@@ -88,18 +88,8 @@
 				if (questionDoesRemain()) {
 					nextQuestion();
 				} else {
-					const params = {
-						course: course,
-						userid: localStorage.getItem("userId"),
-						nickname: localStorage.getItem("nickname"),
-						score: totalScore()
-					};
-					const query_params = new URLSearchParams(params);
-					fetch("https://script.google.com/macros/s/AKfycbycc6vqzgXYaRSXJFzOTWHJQHp-JaE8NFfRzaYXOUbvnNbxDVDv_53D0caYML7JgooEZA/exec?" + query_params).then(response => {
-						response.text().then((result) => {
-							localStorage.setItem(course, totalScore());
-						}).catch(error => {});}).catch(error => {console.log(error);
-					});
+					localStorage.setItem("temporary", totalScore());
+					transit("./result.html?course=" + course);
 				}
 			}
 
@@ -121,7 +111,7 @@
 		<div class="fader coverScreen">
 
 			<div id="progress">
-				<img id="course_icon" src="../img/gattsuri.png" style="width: 60px; height: 60px">　
+				<img id="course_icon" src="../img/GATTSURI.png" style="width: 60px; height: 60px">　
 				<h3>ガッツリコース</h3>　
 				<h2 id="qnumber">第0/0問</h2>
 			</div>

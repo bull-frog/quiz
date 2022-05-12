@@ -6,22 +6,80 @@
 		<link rel="icon" href="../img/favicon.ico">
 		<link rel="stylesheet" href="../style/master.css">
 		<style>
-			
+			header {
+				height: 120px;
+			}
+			.coverScreen {
+				padding-top: 160px;
+			}
 		</style>
 		<script src="../js/transition.js"></script>
 		<script>
+
+			var course;
+			var qId;
+			var question;
+
+			const courses = {
+				GATTSURI: "ガッツリコース",
+				OTEGARU: "お手軽コース",
+				JUKEN: "受験コース"
+			};
 			
+			window.onload = function() {
+				let url = new URL(location.href);
+				course = url.searchParams.get("course");
+				qId = url.searchParams.get("qId");
+			}
+
+			if (!qId || qId == "") {
+				location.href = "../index.html";
+			}
+
+			let requestURL = "https://raw.githubusercontent.com/bull-frog/personal/main/q" + qId + ".json";
+			let request = new XMLHttpRequest();
+			request.open("GET", requestURL);
+			request.responseType = "json";
+			request.send();
+
+			request.onload = function() {
+				question = request.response;
+				document.getElementById("course_icon").setAttribute("src", "../img/" + course + ".png");
+				document.getElementById('coursename').textContent = courses[course];
+				document.getElementById("question_sentence").textContent = question.question;
+				if (question.imgUrl != "") {
+					document.getElementById("question_image").remove("gone");
+					setAttribute("src", question.imgUrl);
+				}
+			}
+
 		</script>
 	</head>
 	<body>
 		
 		<header>
-			<a class="left" href=""><img src="../img/quiz25.png"></a>
-			<a class="right" href=""><img src="../img/hamburger.png"></a>
+			<a class="center"><img src="../img/quiz25.png"></a>
 		</header>
 
 		<div class="fader coverScreen">
 			
+			<div>
+				<img id="course_icon" style="width: 60px; height: 60px">
+				<h3 id="coursename"></h3>
+				<h2>この問題、解けますか？</h2>
+			</div>
+			
+			<div id="question">
+				東大生平均解答時間<span id="avetime">3.5</span>秒
+
+				<h1 id="question_sentence">あの次のひらがなはなんでしょう？<br><br><br><br></h1>
+
+				<div style="display: flex; justify-content: center; align-content: flex-start;">
+					<img id="question_image" class="gone" style="width: 24vw; margin-right: 10vw;">
+					<button class="primary blue" style="width: 60vw;">Quiz25に挑戦する</button>
+				</div>
+			</div>
+
 
 		</div>
 
