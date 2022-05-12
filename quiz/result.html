@@ -90,6 +90,7 @@
 				document.getElementById("totalscore").textContent = score;
 				document.getElementById("yourrank").textContent = rank + "\n";
 				document.getElementById("nickname").textContent = localStorage.getItem("nickname") + "さん";
+				document.getElementById("nickname2").textContent = localStorage.getItem("nickname") + "さん";
 
 				const studentsAverage = numberOfQuestions[course] * 100;
 				var judgement = "";
@@ -120,7 +121,7 @@
 					}, 200);
 				} else {
 					switchScreen = 0;
-					document.getElementById("switchview").textContent = "得点を表示";
+					document.getElementById("switchview").textContent = "判定を表示";
 					document.getElementById("judgement").classList.add("fadeOut");
 					setTimeout(() => {
 						document.getElementById("judgement").classList.add("gone");
@@ -145,16 +146,17 @@
 			<div id="progress">
 				<img id="course_icon" src="../img/gattsuri.png" style="width: 60px; height: 60px">　
 				<h3 id="course_name">ガッツリコース</h3>　
-				<h2>結果発表</h2><br>
-				<h2 id="nickname"></h2>
+				<h2>結果発表</h2>
 			</div>
 
 			<div id="scores" class="fader" style="margin-top: 10vh; margin-bottom: 20vh;">
+				<h2 id="nickname"></h2>
 				<h1 style="margin-bottom: 0;"><span id="totalscore">391</span>点</h1>
 				<h2 id="yourrank" style="margin-top: 0;"></h2>
 			</div>
 
 			<div id="judgement" class="fader fadeOut gone" style="margin-top: 10vh; margin-bottom: 20vh;">
+				<h2 id="nickname2"></h2>
 				<h1 style="margin-bottom: 0;"><span id="judgement_label">391</span></h1>
 				<h2 id="judge_message" style="margin-top: 0;"></h2>
 			</div>
