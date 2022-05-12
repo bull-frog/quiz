@@ -53,6 +53,9 @@
 
 				let url = new URL(location.href);
 				course = url.searchParams.get("course");
+				if (course != "GATTSURI" && course != "OTEGARU" && course != "JUKEN") {
+					location.href = "../index.html";
+				}
 				
 				// 問題リストを受信する
 				let requestURL = "https://raw.githubusercontent.com/bull-frog/personal/main/courses.json";
