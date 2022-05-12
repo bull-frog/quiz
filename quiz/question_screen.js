@@ -9,6 +9,8 @@ function displayNextQuestion() {
 	// H1に問題文を表示
 	document.getElementById("question_sentence").textContent = currentQuestion.question;
 
+	document.getElementById("avetime").textContent = Math.round((currentQuestion.aveTime || 10000) / 100) / 10;
+
 	// 画像がある場合、表示する
 	let image = document.getElementById("question_image");
 	if (currentQuestion.imgUrl == "") {
