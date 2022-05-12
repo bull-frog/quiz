@@ -65,7 +65,8 @@
 				setTimeout(() => {
 					score = localStorage.getItem("temporary");
 					alert("Score: " + score + "\nCourse: " + course);
-					if (!localStorage.getItem(course)) {
+					//if (!localStorage.getItem(course)) {
+					if (true) {
 						localStorage.setItem(course, score);
 						var params = {
 							course: course,
