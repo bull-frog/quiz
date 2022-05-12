@@ -79,6 +79,7 @@
 							response.text().then((result) => {
 								rank = result;
 								localStorage.setItem(course + "_rank", rank);
+								document.getElementById("yourrank").textContent = rank + "\n";
 							}).catch(error => {});}).catch(error => {console.log(error);
 						});
 					} else {
