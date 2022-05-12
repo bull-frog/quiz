@@ -23,7 +23,7 @@ function checkScore(index) {
 function calculateScore() {
 
 	// 得点の計算方法は暫定。
-	const normal_time = 10000;//本来は問題に応じる
+	const normal_time = (currentQuestion.aveTime || 10000);
 
 	let time = getTimerValue();
 	let score = 200 - 95.5 * Math.atan(0.000348 * time);

@@ -48,6 +48,11 @@
 				OTEGARU: "お手軽コース",
 				JUKEN: "受験コース"
 			};
+			const numberOfQuestions = {
+				GATTSURI: 7,
+				OTEGARU: 2,
+				JUKEN: 1
+			}
 			var course;
 			var score;
 			var rank;
@@ -82,6 +87,21 @@
 				document.getElementById("totalscore").textContent = score;
 				document.getElementById("yourrank").textContent = rank;
 
+				const studentsAverage = numberOfQuestions[course] * 100;
+				var judgement = "";
+				var judgeMessage = "";
+				if (score > studentsAverage) {
+					judgement = "上位合格!";
+					judgeMessage = "合格者平均点を上回る、余裕の実力ですね！\n理一25組でお待ちしてます！";
+				} else if (score > studentsAverage * 0.907) {
+					judgement = "合格!";
+					judgeMessage = "合格おめでとうございます！\n他のコースにもチャレンジしてみてね！";
+				} else {
+					judgement = "不合格…";
+					judgeMessage = "今後の努力に期待します！\n他のコースにもチャレンジしてみてね！";
+				}
+				document.getElementById("judgement_label").textContent = judgement;
+				document.getElementById("judge_message").textContent = judgeMessage;
 			}
 
 			function switchView() {
@@ -130,7 +150,8 @@
 			</div>
 
 			<div id="judgement" class="fader fadeOut gone" style="margin-top: 10vh; margin-bottom: 20vh;">
-			
+				<h1 style="margin-bottom: 0;"><span id="judgement_label">391</span></h1>
+				<h2 id="judge_message" style="margin-top: 0;"></h2>
 			</div>
 
 			<div id="menu">
