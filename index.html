@@ -39,7 +39,6 @@
 
 			.ranking span {
 				font-size: x-large;
-				transform: scaleY(1.3);
 			}
 		</style>
 		<script src="./js/transition.js"></script>
@@ -74,7 +73,7 @@
 		
 		<header>
 			<a class="left" href=""><img src="./img/quiz25.png"></a>
-			<a class="right" href=""><img src="./img/hamburger.png"></a>
+			<!-- <a class="right" href=""><img src="./img/hamburger.png"></a> -->
 		</header>
 
 		<div class="fader coverScreen">
@@ -90,7 +89,7 @@
 						理一生が本気で考えた知能クイズ\n全35問
 					</div>
 					<div class="ranking">
-						<span id="GATTSURI_SCORE"></span>点
+						　　<span id="GATTSURI_SCORE"> - </span>点
 					</div>
 					<button onclick="transit('./quiz/index.html?course=GATTSURI')" class="secondary red triangle">始める</button>
 
@@ -100,7 +99,7 @@
 						常識の範疇内\n全20問
 					</div>
 					<div class="ranking">
-						<span id="OTEGARU_SCORE"></span>点
+						　　<span id="OTEGARU_SCORE"> - </span>点
 					</div>
 					<button onclick="transit('./quiz/index.html?course=OTEGARU')" class="secondary blue triangle">始める</button>
 
@@ -110,7 +109,7 @@
 						東大受験を控えたあなたに\n全17問
 					</div>
 					<div class="ranking">
-						<span id="JUKEN_SCORE">290</span>点
+						　　<span id="JUKEN_SCORE"> - </span>点
 					</div>
 					<button onclick="transit('./quiz/index.html?course=JUKEN')" class="secondary green triangle">始める</button>
 
