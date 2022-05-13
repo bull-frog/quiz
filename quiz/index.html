@@ -48,6 +48,12 @@
 			var section_question;
 			var section_answer;
 
+			const courses = {
+				GATTSURI: "ガッツリコース",
+				OTEGARU: "お手軽コース",
+				JUKEN: "受験コース"
+			};
+
 			window.onload = function() {
 				section_question = document.getElementById("question");
 				section_answer = document.getElementById("answer");
@@ -57,6 +63,9 @@
 				if (course != "GATTSURI" && course != "OTEGARU" && course != "JUKEN") {
 					location.href = "../index.html";
 				}
+
+				document.getElementById("course_label").textContent = courses[course];
+				document.getElementById("course_label").setAttribute("src", "../img/" + course + ".png");
 				
 				// 問題リストを受信する
 				let requestURL = "https://raw.githubusercontent.com/bull-frog/personal/main/courses.json";
@@ -112,7 +121,7 @@
 
 			<div id="progress">
 				<img id="course_icon" src="../img/GATTSURI.png" style="width: 60px; height: 60px">　
-				<h3>ガッツリコース</h3>　
+				<h3 id="course_label">ガッツリコース</h3>　
 				<h2 id="qnumber">第0/0問</h2>
 			</div>
 			
