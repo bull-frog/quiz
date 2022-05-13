@@ -87,7 +87,7 @@
 							}).catch(error => {});}).catch(error => {console.log(error);
 						});
 					} else {
-						rank = "前回以前に登録された順位：" + localStorage.getItem(course + "_rank");
+						rank = "初会回答時順位：" + localStorage.getItem(course + "_rank");
 					}
 					displayResult();
 				}, 10);
@@ -101,13 +101,13 @@
 
 				const studentsAverage = numberOfQuestions[course] * 100;
 				if (score > studentsAverage) {
-					judgement = "上位合格!";
+					judgement = "上位合格！";
 					judgeMessage = "合格者平均点を上回る、余裕の実力ですね！\n理一25組でお待ちしてます！";
 				} else if (score > studentsAverage * 0.907) {
-					judgement = "合格!";
+					judgement = "合格！";
 					judgeMessage = "合格おめでとうございます！\n他のコースにもチャレンジしてみてね！";
 				} else {
-					judgement = "不合格…";
+					judgement = "不合格...";
 					judgeMessage = "今後の努力に期待します！\n他のコースにもチャレンジしてみてね！";
 				}
 				document.getElementById("judgement_label").textContent = judgement;
@@ -146,8 +146,8 @@
 				});
 				window.sessionStorage.setItem("sns",
 					"#Quiz25 結果発表！\n\n>>> " + localStorage.getItem("nickname") + "さん <<<\n"
-					+ courses[course] + "：" + score + "\n　" + rank
-					+ "\n\n>>> 判定結果 <<<\n　　　" + judgement + "\n" + judgeMessage
+					+ courses[course] + "　" + score + "点\n" + rank
+					+ "\n\n>>> 判定結果 <<<\n" + judgement + "\n" + judgeMessage
 					+ "\n\n\n東大理一25組「Quiz 25」");
 				setTimeout(() => {
 					transit('../share/index.html');
