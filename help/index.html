@@ -6,17 +6,38 @@
 		<link rel="icon" href="../img/favicon.ico">
 		<link rel="stylesheet" href="../style/master.css">
 		<style>
-			
 		</style>
 		<script src="../js/transition.js"></script>
 		<script>
-
+			function okay() {
+				localStorage.setItem("helpok", true);
+				transit("../index.html");
+			}
 		</script>
 	</head>
 	<body>
 		<div class="fader coverScreen">
 			<h1>Quiz 25のルール</h1>
-			Quiz 25は、2022年度入学理一25組の学生が制作したクイズサイトです。<br>
+			<div style="text-align: left">
+				Quiz 25は、2022年度入学理一25組の学生が制作したクイズサイトです。<br>
+				各問題ごとに「東大生（理一25組）平均回答時間」が表示されています。<br>
+				平均回答時間に対して、あなたの回答時間が短いほど、高得点となります。<br>
+				<h2>コースについて</h2>
+				<ul>
+					<li>ガッツリコース：問題数、問題レベルとともに最難関です。</li>
+					<li>お手軽コース　：身近な知識問題も含まれますが、油断は禁物です！</li>
+					<li>受験コース　　：東京大学に関する諸知識を中心とした出題です。</li>
+				</ul>
+				<h2>ランキングについて</h2>
+				ランキングが登録されるのは、各コースとも初回の回答時のみです。<br>
+				もちろん同じコースに再挑戦することも可能ですが、ランキングは更新されないのでご注意ください。
+				<br><br><br><br>
+				--- STAFF ---
+				問題制作：2022年度入学 東京大学理科一類25組一同
+				Web制作：S.Nakao
+				デザイン：S.Inaba
+			</div>
+			<button class="primary blue" style="max-width: 500px;" onclick="okay()">OK!</button>
 		</div>
 	</body>
 </html>

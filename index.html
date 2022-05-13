@@ -51,6 +51,9 @@
 				} else {
 					location.href = "./welcome/index.html";
 				}
+				if (!localStorage.getItem("helpok")) {
+					location.href = "./help/index.html";
+				}
 
 				const gattsuriscore = localStorage.getItem("GATTSURI");
 				const otegaruscore = localStorage.getItem("OTEGARU");
