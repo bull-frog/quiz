@@ -1,1 +1,56 @@
 <!-- View ranking -->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Quiz 25</title>
+		<link rel="icon" href="../img/favicon.ico">
+		<link rel="stylesheet" href="../style/master.css">
+		<style>
+
+			.coverScreen {
+				padding-top: 40px;
+			}
+
+			body {
+				background-color: #fdffef;
+				overflow-y: hidden;
+			}
+
+		</style>
+		<script src="../js/transition.js"></script>
+		<script>
+
+			var course;
+			const spreadsheetLinks = {
+				GATTSURI: "https://docs.google.com/spreadsheets/d/e/2PACX-1vSIu2THhb7wxV8gd4-WHEU0IEKTxZH46NaSsXakPXT7MMZnnXUdqEOmStvD_3PrP_BqRT20v0QCK4hv/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false",
+				OTEGARU: "https://docs.google.com/spreadsheets/d/e/2PACX-1vSIu2THhb7wxV8gd4-WHEU0IEKTxZH46NaSsXakPXT7MMZnnXUdqEOmStvD_3PrP_BqRT20v0QCK4hv/pubhtml?gid=2091075080&amp;single=true&amp;widget=true&amp;headers=false",
+				JUKEN: "https://docs.google.com/spreadsheets/d/e/2PACX-1vSIu2THhb7wxV8gd4-WHEU0IEKTxZH46NaSsXakPXT7MMZnnXUdqEOmStvD_3PrP_BqRT20v0QCK4hv/pubhtml?gid=1164580138&amp;single=true&amp;widget=true&amp;headers=false"
+			};
+
+			window.onload = function() {
+				course = (new URL(location.href)).searchParams.get("course");
+				var spreadsheetframe = document.getElementById("spreadsheet");
+				spreadsheetframe.setAttribute("width", 600);
+				spreadsheetframe.setAttribute("height", document.documentElement.clientHeight - 100);
+				spreadsheetframe.setAttribute("src", spreadsheetLinks[course]);
+			}
+
+		</script>
+	</head>
+	<body>
+
+		<header>
+			<a onclick="transit('../index.html')" class="left"><img src="../img/quiz25.png"></a>
+			<a class="right"><img src="../img/hamburger.png"></a>
+		</header>
+
+		<div class="fader coverScreen alignChildAtCenter">
+
+			<iframe style="border: solid 0px transparent;" id="spreadsheet"></iframe>
+
+		</div>
+
+
+	</body>
+</html>
