@@ -4,6 +4,8 @@ h1 {
 	font-family: 'Zen Kaku Gothic New', sans-serif;
 	font-weight: 700;
 	white-space: pre-wrap;
+	padding-left: 10px;
+	padding-right: 10px;
 }
 
 h2 {
