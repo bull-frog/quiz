@@ -21,7 +21,8 @@
 			var link;
 
 			window.onload = function() {
-				course = (new URL(location.href)).searchParams.get("qId");
+				qId = (new URL(location.href)).searchParams.get("qId");
+
 				if (!qId) {
 					window.close();
 					History.back();
