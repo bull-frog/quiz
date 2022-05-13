@@ -52,6 +52,20 @@
 				} else {
 					location.href = "./welcome/index.html";
 				}
+
+				const gattsuriscore = localStorage.getItem("GATTSURI");
+				const otegaruscore = localStorage.getItem("OTEGARU");
+				const jukenscore = localStorage.getItem("JUKEN");
+				if (gattsuriscore) {
+					document.getElementById("GATTSURI_SCORE").textContent = gattsuriscore;
+				}
+				if (otegaruscore) {
+					document.getElementById("OTEGARU_SCORE").textContent = otegaruscore;
+				}
+				if (jukenscore) {
+					document.getElementById("JUKEN_SCORE").textContent = jukenscore;
+				}
+
 			}
 			
 		</script>
@@ -73,33 +87,30 @@
 					<img src="./img/GATTSURI.png">
 					<div>
 						<h2>ガッツリコース</h2>
-						理一生が本気で考えた知能クイズ（全35問）
+						理一生が本気で考えた知能クイズ\n全35問
 					</div>
 					<div class="ranking">
-						<!-- <img src="./img/gold.png">
-						<span>290</span>点　　<span>Ken.T</span> -->
+						<span id="GATTSURI_SCORE"></span>点
 					</div>
 					<button onclick="transit('./quiz/index.html?course=GATTSURI')" class="secondary red triangle">始める</button>
 
 					<img src="./img/OTEGARU.png">
 					<div>
 						<h2>お手軽コース</h2>
-						常識の範疇内（全20問）
+						常識の範疇内\n全20問
 					</div>
 					<div class="ranking">
-						<!-- <img src="./img/gold.png">
-						<span>590</span>点　　<span>Ken.T</span> -->
+						<span id="OTEGARU_SCORE"></span>点
 					</div>
 					<button onclick="transit('./quiz/index.html?course=OTEGARU')" class="secondary blue triangle">始める</button>
 
 					<img src="./img/JUKEN.png">
 					<div>
 						<h2>受験コース</h2>
-						東大受験を控えたあなたに（全17問）
+						東大受験を控えたあなたに\n全17問
 					</div>
 					<div class="ranking">
-						<!-- <img src="./img/gold.png">
-						<span>290</span>点　　<span>Ken.T</span> -->
+						<span id="JUKEN_SCORE">290</span>点
 					</div>
 					<button onclick="transit('./quiz/index.html?course=JUKEN')" class="secondary green triangle">始める</button>
 
