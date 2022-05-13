@@ -28,7 +28,10 @@
 
 			function dl() {
 				var data = sessionStorage.getItem('screenshot');
-				
+				var a = document.createElement('a');
+				a.href = data;
+				a.download = 'download.jpg';
+				a.click();
 			}
 
 		</script>
@@ -49,9 +52,8 @@
 			<div id="shareoptions" style="padding-left: 10vw; padding-right: 10vw; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; justify-content: center;">
 				<a id="twitter"><img src="../img/twitter.png"></a>
 				<a id="line"><img src="../img/line.png"></a>
+				<button onclick="dl()" class="secondary red">画像ダウンロード…</button>
 			</div>
-			<br><br><br><br>
-			<button onclick="dl()" class="secondary red">画像でダウンロード…</button>
 
 		</div>
 
