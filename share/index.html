@@ -16,6 +16,20 @@
 		<script src="../js/transition.js"></script>
 		<script>
 
+			const homepage = "https://wweefasdgfasdgadsfgaefhasdf.com/";
+
+			window.onload = function() {
+				const sns = sessionStorage.getItem("sns");
+				const twitter = encodeURIComponent(sns);
+				const line = twitter + "%0d" + homepage;
+				document.getElementById("twitter").setAttribute("src", "https://twitter.com/intent/tweet?text=" + twitter + "&url=" + homepage);
+				document.getElementById("line").setAttribute("src", "https://line.me/R/msg/text/?" + line);
+			}
+
+			function dl() {
+				
+			}
+
 		</script>
 	</head>
 	<body>
@@ -28,16 +42,15 @@
 		<div class="fader coverScreen">
 
 			<br><br>
-			<h1>結果を共有する</h1>
+			<h1>結果をシェア</h1>
 			<br><br><br><br>
 
 			<div id="shareoptions" style="padding-left: 10vw; padding-right: 10vw; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; justify-content: center;">
-				<a><img src="../img/instragram.png"></a>
-				<a><img src="../img/twitter.png"></a>
-				<a><img src="../img/line.png"></a>
+				<a id="twitter"><img src="../img/twitter.png"></a>
+				<a id="line"><img src="../img/line.png"></a>
 			</div>
 			<br><br><br><br>
-			<button class="secondary red">画像をダウンロード…</button>
+			<button onclick="dl()" class="secondary red">画像でダウンロード…</button>
 
 		</div>
 
