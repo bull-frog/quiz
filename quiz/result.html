@@ -42,6 +42,7 @@
 			
 		</style>
 		<script src="../js/transition.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
 		<script>
 
 			const courses = {
@@ -58,6 +59,9 @@
 			var score;
 			var rank;
 			var switchScreen = 0; // 0がスコア、1が判定画面
+
+			var judgement = "";
+			var judgeMessage = "";
 
 			window.onload = function() {
 				course = (new URL(location.href)).searchParams.get("course");
@@ -97,8 +101,6 @@
 				document.getElementById("nickname2").textContent = localStorage.getItem("nickname") + "さん";
 
 				const studentsAverage = numberOfQuestions[course] * 100;
-				var judgement = "";
-				var judgeMessage = "";
 				if (score > studentsAverage) {
 					judgement = "上位合格!";
 					judgeMessage = "合格者平均点を上回る、余裕の実力ですね！\n理一25組でお待ちしてます！";
@@ -135,6 +137,23 @@
 				}
 			}
 
+			function share() {
+				// 画像をセッション・ストレージに保存する
+				html2canvas(document.body, {
+					onrendered: function(canvas){
+          				var imgData = canvas.toDataURL();
+						window.sessionStorage.setItem("screenshot", imgData);
+        			}
+				});
+				window.sessionStorage.setItem("sns",
+					"#Quiz25 結果発表！\n\n>>> " + localStorage.getItem("nickname") + "さん <<<\n"
+					+ courses[course] + "：" + score + "\n　" + rank
+					+ "\n\n>>> 判定結果 <<<\n　　　" + judgement + "\n" + judgeMessage
+					+ "\n\n\n東大理一25組「Quiz 25」\nhttps://wweefasdgfasdgadsfgaefhasdf.com/");
+				setTimeout(() => {
+					transit('../share/index.html');
+				}, 40);
+
 			
 		</script>
 	</head>
@@ -166,7 +185,7 @@
 			</div>
 
 			<div id="menu">
-				<button id="share" class="primary blue">共有する</button>
+				<button id="share" onclick="share()" class="primary blue">共有する</button>
 				<button id="switchview" onclick="switchView();" class="primary red triangle">判定を表示</button>
 				<button id="ranking" onclick="transit('../ranking/index.html?course=' + course)" class="primary green triangle">ランキング</button>
 			</div>
