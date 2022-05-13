@@ -22,8 +22,8 @@
 				const sns = sessionStorage.getItem("sns");
 				const twitter = encodeURIComponent(sns);
 				const line = twitter + "%0d" + homepage;
-				document.getElementById("twitter").setAttribute("src", "https://twitter.com/intent/tweet?text=" + twitter + "&url=" + homepage);
-				document.getElementById("line").setAttribute("src", "https://line.me/R/msg/text/?" + line);
+				document.getElementById("twitter").href = "https://twitter.com/intent/tweet?text=" + twitter + "&url=" + homepage;
+				document.getElementById("line").href = "https://line.me/R/msg/text/?" + line;
 			}
 
 			function dl() {
@@ -54,6 +54,8 @@
 				<a id="line"><img src="../img/line.png"></a>
 				<button onclick="dl()" class="secondary red">画像ダウンロード…</button>
 			</div>
+			<br><br><br>
+			<button class="primary red" onclick="History.back()">戻る</button>
 
 		</div>
 

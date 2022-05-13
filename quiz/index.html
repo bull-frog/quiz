@@ -35,6 +35,19 @@
 				width: 100%;
 				height: auto;
 			}
+
+			#sharebutton::after {
+				content: "";
+				display: inline-block;
+				position: absolute;
+				width: 30px;
+				height: 30px;
+				bottom: 5px;
+				right: 10px;
+				background-image: url("../img/share.png");
+				background-size: contain;
+				vertical-align: middle;
+			}
 			
 		</style>
 		<script src="../js/transition.js"></script>
@@ -108,6 +121,10 @@
 				}
 			}
 
+			function share() {
+				window.open("../share/share_question.html?qId=" + currentQuestion.qId);
+			}
+
 		</script>
 	</head>
 	<body>
@@ -121,12 +138,12 @@
 
 			<div id="progress">
 				<img id="course_icon" src="../img/GATTSURI.png" style="width: 60px; height: 60px">　
-				<h3 id="course_label">ガッツリコース</h3>　
+				<h3 id="course_label"></h3>　
 				<h2 id="qnumber">第0/0問</h2>
 			</div>
 			
 			<div id="question" class="fader">
-				東大生平均解答時間<span id="avetime">3.5</span>秒
+				東大生平均解答時間<span id="avetime"></span>秒
 
 				<h1 id="question_sentence"></h1><br>
 
@@ -143,14 +160,14 @@
 					<img id="answericon" src="../img/ok.png">
 
 					<div style="text-align: left;">
-						<h1 id="judge" style="font-size: 260%; margin-top: 0;">正解！</h1>
-						<span id="comment">パンダの学名は◯◯。△△はホッキョクグマ、□□はタテゴトアザラシの学名です。</span>
+						<h1 id="judge" style="font-size: 260%; margin-top: 0;"></h1>
+						<span id="comment"></span>
 						<br><br>
-						解答時間：<span id="time">3.8</span>秒<br>
-						得点：<span id="score">25</span>点
+						解答時間：<span id="time"></span>秒<br>
+						得点：<span id="score"></span>点
 					</div>
 				</div>
-
+				<button id="sharebutton" onclick="share();" class="secondary blue"></button>
 				<button id="nextbutton" onclick="closeAnswer()" class="primary red triangle" style="width: 300px">次へ</button>
 
 			</div>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Quiz 25</title>
+		<link rel="icon" href="../img/favicon.ico">
+		<link rel="stylesheet" href="../style/master.css">
+		<style>
+			
+			#shareoptions img {
+				height: 60px;
+				width: 60px;
+			}
+
+		</style>
+		<script src="../js/transition.js"></script>
+		<script>
+
+			var qId;
+
+			var link;
+
+			window.onload = function() {
+				course = (new URL(location.href)).searchParams.get("qId");
+				if (!qId) {
+					window.close();
+					History.back();
+				}
+
+				let requestURL = "https://raw.githubusercontent.com/bull-frog/personal/main/q" + qId + ".json";
+				let request = new XMLHttpRequest();
+				request.open("GET", requestURL);
+				request.responseType = "json";
+				request.send();
+				request.onload = function() {
+					var question = request.response.question;
+					const sns = "#Quiz25 この問題が解けますか？\n\n>>> No." + qId + " <<<\n"
+						+ (question.length > 60 ? (question).slice(0,60)+"…" : question) + "\n\nあなたも挑戦してみましょう！\n-------------\n東大理一25組「Quiz 25」\n";
+					const twitter = encodeURIComponent(sns);
+					link = "https::/asdfaedfaedafdf.com/?qId=" + qId;
+					const line = twitter + "%0d" + link;
+
+					document.getElementById("twitter").href = "https://twitter.com/intent/tweet?text=" + twitter + "&url=" + link;
+					document.getElementById("line").href = "https://line.me/R/msg/text/?" + line;
+				}
+
+			}
+
+			function copyLink() {
+				navigator.clipboard.writeText(link);
+				alert("クリップボードにコピーされました！");
+			}
+
+		</script>
+	</head>
+	<body>
+		
+		<header>
+			<a onclick="transit('../index.html')" class="left"><img src="../img/quiz25.png"></a>
+			<a class="right"><img src="../img/hamburger.png"></a>
+		</header>
+
+		<div class="fader coverScreen">
+
+			<br><br>
+			<h1>問題をシェア</h1>
+			<br><br><br><br>
+
+			<div id="shareoptions" style="padding-left: 10vw; padding-right: 10vw; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; justify-content: center;">
+				<a id="twitter"><img src="../img/twitter.png"></a>
+				<a id="line"><img src="../img/line.png"></a>
+				<button onclick="copyLink()" class="secondary red">URLをコピー</button>
+			</div>
+			<br><br><br>
+			<button class="primary red" onclick="window.close()">完了</button>
+
+		</div>
+
+
+	</body>
+</html>

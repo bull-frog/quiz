@@ -69,7 +69,6 @@
 				document.getElementById("course_name").textContent = courses[course];
 				setTimeout(() => {
 					score = localStorage.getItem("temporary");
-					alert("Score: " + score + "\nCourse: " + course);
 					if (!localStorage.getItem(course)) {
 					// if (true) {
 						localStorage.setItem(course, score);
